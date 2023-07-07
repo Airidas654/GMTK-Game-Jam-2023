@@ -46,11 +46,15 @@ public class Enemy : MonoBehaviour
     {
         if (dead) return;
 
-        //TODO
-        //if ((buildingManager.FindClosest(transform.position).position - transform.position).magnitude < hitDistance)
-        //{
-        //  buildingManager.Hit(damage)
-        //}
+        if ((BuildingManager.Instance.FindClosest(transform.position).transform.position - transform.position).sqrMagnitude < hitDistance*hitDistance)
+        {
+            //buildingManager.Hit(damage)
+            stopped = true;
+        }
+        else
+        {
+            stopped = false;
+        }
 
         if (!stopped)
         {
