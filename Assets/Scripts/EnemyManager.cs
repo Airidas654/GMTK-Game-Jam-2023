@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
-    static EnemyManager Instance = null;
+    public static EnemyManager Instance = null;
     [SerializeField] Vector2 notSpawnBox;
     [SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 
@@ -74,7 +74,7 @@ public class EnemyManager : MonoBehaviour
         GameObject obj = enemies.Get();
         obj.transform.position = GetNewSpawnPosition();
 
-        //TODO obj.GetComponent<Enemy>().SetTarget(GameManager.Instance.MainBuilding.transform.position);
+        obj.GetComponent<Enemy>().SetTarget(BuildingManager.Instance.MainBuilding.transform.position);
     }
 
     private void Awake()
