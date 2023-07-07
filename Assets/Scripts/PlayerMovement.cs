@@ -15,20 +15,34 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AnimationCurve stopCurve = AnimationCurve.Linear(0, 1, 1, 0);
 
     private Rigidbody2D rigid;
+    private Animator anim;
+    private Shooting shoot;
     private float horizontalMovementTime = 0;
     private float verticalMovementTime = 0;
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        shoot = GetComponent<Shooting>();
     }
 
 
     void Update()
     {
         ////////////// Horizontal movement //////////////
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal;
+        float vertical;
+        if (shoot.shooting)
+        {
+            horizontal = 0;
+            vertical = 0;
+        }
+        else
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
         float horizontalSpeed = 0;
         float verticalSpeed = 0;
         if (horizontal > 0)
@@ -112,16 +126,25 @@ public class PlayerMovement : MonoBehaviour
 
         rigid.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * movingSpeed;
 
-
-        if (rigid.velocity.x >= 0)
+        if (rigid.velocity.magnitude <= float.Epsilon)
         {
-            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            anim.SetBool("Moving", false);
         }
         else
         {
+            anim.SetBool("Moving", true);
+        }
+
+
+        if (horizontal > 0)
+        {
             transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
         }
-        /// move animation here
+        else if (horizontal < 0)
+        {
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        }
+
 
     }
 }
