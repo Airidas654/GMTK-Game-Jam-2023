@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     bool stopped = false;
     bool dead = false;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, hitDistance);
