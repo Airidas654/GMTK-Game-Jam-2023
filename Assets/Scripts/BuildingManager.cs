@@ -12,6 +12,7 @@ public class BuildingManager : MonoBehaviour
     }
     [SerializeField] Vector2 playableArea;
     [SerializeField] Vector2Int rectangleCount;
+    Vector2 step;
 
     [SerializeField] List<NoBuildZone> noBuildZones = new List<NoBuildZone>();
 
@@ -31,6 +32,8 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         occupied = new bool[rectangleCount.y, rectangleCount.x];
+
+        step = playableArea/rectangleCount;
 
         for (int i = 0; i < rectangleCount.y; i++)
         {
@@ -59,20 +62,30 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
+    Vector2Int GetIndices(Vector2 position)
+    {
+        Vector2 newPos = position + new Vector2(playableArea.x / 2, playableArea.y / 2);
+        newPos = Vector3.Max(Vector3.zero, Vector3.Min(newPos, playableArea));
+
+        return new Vector2Int(Mathf.FloorToInt(newPos.x / step.x), Mathf.FloorToInt(newPos.y / step.y));
+    }
+
     public void AddTower(GameObject obj)
     {
-
+        Vector2Int index = GetIndices(obj.transform.position);
+        occupied[index.y, index.x] = true;
     }
 
     public void DeleteTower(GameObject obj)
     {
-
+        Vector2Int index = GetIndices(obj.transform.position);
+        occupied[index.y, index.x] = false;
     }
     
     void Update()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
+        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        //Debug.DrawRay(GetIndices(mousePos)*step-playableArea/2, Vector3.up, Color.cyan, 0.1f);
     }
 }
