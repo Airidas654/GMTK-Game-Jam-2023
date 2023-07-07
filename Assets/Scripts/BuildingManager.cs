@@ -10,6 +10,9 @@ public class BuildingManager : MonoBehaviour
         public Vector2 size;
         public Vector2 position;
     }
+
+    static BuildingManager Instance = null;
+
     [SerializeField] Vector2 playableArea;
     [SerializeField] Vector2Int rectangleCount;
     Vector2 step;
@@ -59,6 +62,18 @@ public class BuildingManager : MonoBehaviour
                     occupied[i, j] = true;
                 }
             }
+        }
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
