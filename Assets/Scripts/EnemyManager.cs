@@ -62,6 +62,13 @@ public class EnemyManager : MonoBehaviour
         return ans;
     }
 
+    IEnumerator testas()
+    {
+        SpawnNewEnemy();
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(testas());
+    }
+
     public void SpawnNewEnemy()
     {
         GameObject obj = enemies.Get();
@@ -72,6 +79,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
+        
         if (Instance != null)
         {
             Destroy(gameObject);
