@@ -36,6 +36,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SetTarget(Vector3 pos)
+    {
+        target = pos;
+    }
+
     // Update is called once per frame
     void Update()
     {
