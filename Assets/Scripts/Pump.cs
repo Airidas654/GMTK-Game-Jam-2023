@@ -8,6 +8,7 @@ public class Pump : MonoBehaviour
     public static Pump Instance = null;
 
     [SerializeField] GameObject dropPrefab;
+    [SerializeField] int maxDropletCount = 5;
     public ObjectPool<GameObject> drops { get; private set; }
 
     private void Start()
@@ -33,13 +34,15 @@ public class Pump : MonoBehaviour
 
     float spawnVal;
 
+    int dropletCount;
     private void Update()
     {
-        if (!stopped)
+        if (!stopped && dropletCount < maxDropletCount)
         {
             spawnVal -= Time.deltaTime;
             if (spawnVal <= 0)
             {
+                dropletCount++;
                 GameObject obj = drops.Get();
                 obj.transform.position = transform.position;
                 obj.GetComponent<PickableDrop>().Reset();
@@ -61,6 +64,7 @@ public class Pump : MonoBehaviour
 
     void ReleaseDrop(GameObject obj)
     {
+        dropletCount--;
         obj.SetActive(false);
     }
 }
