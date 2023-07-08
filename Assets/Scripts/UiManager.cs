@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class UiManager : MonoBehaviour
 
 
     public static UiManager Instance;
-    public static int survived;
+    public static int? survived;
 
     private float defaultY;
     [SerializeField] float BuildingBlockOffsetY;
@@ -47,6 +48,13 @@ public class UiManager : MonoBehaviour
 
         DOTween.Kill(black.color);
         DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 0), 1).OnComplete(() => { black.gameObject.SetActive(false); GameManager.Instance.StartGame(); }).SetEase(Ease.InOutCubic);
+    }
+
+    public void ReturnToMeniu()
+    {
+        DOTween.Kill(black.color);
+        black.gameObject.SetActive(true);
+        DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 1), 1).OnComplete(() => SceneManager.LoadScene(0)).SetEase(Ease.InOutCubic);
     }
 
     public void UpdateTimer(int time)

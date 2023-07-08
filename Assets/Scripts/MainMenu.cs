@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
         DOTween.Kill(black.color);
         DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 0), 1).OnComplete(() => black.gameObject.SetActive(false)).SetEase(Ease.InOutCubic);
         once = false;
-        if (UiManager.survived != default)
+        if (UiManager.survived != null)
         {
             if(UiManager.survived == -1)
             {
