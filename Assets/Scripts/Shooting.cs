@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Shooting : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class Shooting : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && cooldown == 0 && game.water >= cost)
         {
+            if (EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null)
+            {
+                return;
+            }
             cooldown = shootingCooldown;
             game.SubtractWater(cost);
             mousepos = Input.mousePosition;

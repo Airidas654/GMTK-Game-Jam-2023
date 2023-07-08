@@ -17,6 +17,14 @@ public class GameManager : MonoBehaviour
     public Vector2 WorldBorders;
 
     public static GameManager Instance;
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(Vector2.zero, new Vector2(WorldBorders.x*2, WorldBorders.y*2));
+    }
+
+
     private void Awake()
     {
         if (Instance == null)

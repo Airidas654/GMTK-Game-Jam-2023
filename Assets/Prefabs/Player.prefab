@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 6567567516015092312, guid: fbc5af29c44bd4d4a91f8f4fe9058c67, type: 3}
   shootingCooldown: 0.3
+  cost: 1
   shooting: 0
 --- !u!50 &7807887092273417454
 Rigidbody2D:
