@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
 
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] float shootingCooldown;
+    [SerializeField] int cost;
     public bool shooting;
     GameManager game;
     float cooldown;
@@ -42,10 +43,10 @@ public class Shooting : MonoBehaviour
             cooldown -= Time.deltaTime;
             if (cooldown < 0) cooldown = 0;
         }
-        if (Input.GetMouseButtonDown(0) && cooldown == 0 && game.water != 0)
+        if (Input.GetMouseButtonDown(0) && cooldown == 0 && game.water >= cost)
         {
             cooldown = shootingCooldown;
-            game.SubtractWater(1);
+            game.SubtractWater(cost);
             mousepos = Input.mousePosition;
             shooting = true;
             anim.SetBool("Shooting",true);
