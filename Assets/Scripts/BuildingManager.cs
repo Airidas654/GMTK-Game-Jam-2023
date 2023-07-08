@@ -18,6 +18,7 @@ public class BuildingManager : MonoBehaviour
     Vector2 step;
 
     [SerializeField] List<NoBuildZone> noBuildZones = new List<NoBuildZone>();
+    [SerializeField] List<Sprite> buildingCursorSprites = new List<Sprite>();
 
     public GameObject MainBuilding;
     private void OnDrawGizmosSelected()
