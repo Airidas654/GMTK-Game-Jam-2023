@@ -132,3 +132,4 @@ MonoBehaviour:
   enemyDetectionRange: 10
   enemyHitRange: 4
   damage: 1
+  maxShots: 3
