@@ -59,7 +59,7 @@ public class PickableDrop : MonoBehaviour
         
         if (seek)
         {
-            Vector3 playerPos = GameManager.Instance.Player.transform.position;
+            Vector3 playerPos = GameManager.Instance.Player.transform.GetChild(0).position;
             transform.position = Vector3.Lerp(pradPos, playerPos, tweenVal);
         }
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2517803179617001798}
   - component: {fileID: 4321274414986397569}
+  - component: {fileID: 3567363691100380481}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,3 +48,21 @@ MonoBehaviour:
   MaxWaterInBar: 20
   pumpMaxHealth: 100
   Player: {fileID: 0}
+--- !u!114 &3567363691100380481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114972176643473605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9f91354cd2a024398c6ce59adc8684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableArea: {x: 40, y: 20}
+  rectangleCount: {x: 20, y: 10}
+  noBuildZones:
+  - size: {x: 2, y: 2}
+    position: {x: 0, y: 0}
+  MainBuilding: {fileID: 0}

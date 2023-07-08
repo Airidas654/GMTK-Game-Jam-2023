@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randDist: 1
-  seekDist: 1.5
+  seekDist: 2.5
   waterAmount: 5
