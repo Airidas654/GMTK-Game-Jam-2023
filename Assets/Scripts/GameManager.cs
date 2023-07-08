@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(Vector2.zero, new Vector2(WorldBorders.x*2, WorldBorders.y*2));
+        Gizmos.DrawWireCube(Vector2.zero, new Vector2(WorldBorders.x * 2, WorldBorders.y * 2));
     }
 
 
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
         water += amount;
         water = Mathf.Min(water, MaxWaterInBar);
         UiManager.Instance.UpdateWaterBar((float)water / MaxWaterInBar);
-        
+
     }
 
     public void SubtractWater(int amount)
@@ -89,6 +90,10 @@ public class GameManager : MonoBehaviour
     public void DamagePump(float damage)
     {
         pumpHealth -= damage;
+        pumpHealth = Mathf.Max(0, pumpHealth);
+        Transform obj = Pump.Instance.gameObject.transform.GetChild(0).GetChild(0);
+        DOTween.Kill(obj);
+        obj.DOScaleX(pumpHealth / pumpMaxHealth, 0.2f).SetEase(Ease.InOutCubic);
         if (pumpHealth <= 0)
         {
             GameOver();
