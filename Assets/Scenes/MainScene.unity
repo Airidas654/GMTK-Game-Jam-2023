@@ -331,6 +331,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4839446102299286574, guid: dc88c7cf2e97f134194705e9a4ff7750, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6431464399595126976, guid: dc88c7cf2e97f134194705e9a4ff7750, type: 3}
       propertyPath: m_Name
       value: Canvas

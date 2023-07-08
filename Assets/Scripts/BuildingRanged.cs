@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.Pool;
 
 public class BuildingRanged : Building
 {
@@ -8,6 +9,9 @@ public class BuildingRanged : Building
     [SerializeField] float enemyDetectionRange = 10f;
     [SerializeField] float enemyHitRange = 1f;
     [SerializeField] float damage = 1f;
+
+    
+    
 
     bool canHit = false;
 
@@ -20,7 +24,10 @@ public class BuildingRanged : Building
     {
         base.Start();
         animParameterId = Animator.StringToHash("IsHitting");
+        
     }
+
+    
 
     private void OnDrawGizmosSelected()
     {
@@ -65,6 +72,10 @@ public class BuildingRanged : Building
                 if (canHit)
                 {
                     canHit = false;
+
+                    GameObject obj = PoolManager.Instance.shotTrailPool.Get();
+                    obj.GetComponent<ShotTrail>().Reset(transform.position,closest.transform.position);
+
                     closest.GetComponent<Enemy>().TakeDamage(damage);
                 }
             }
