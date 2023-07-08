@@ -18,8 +18,13 @@ public class BuildingManager : MonoBehaviour
     Vector2 step;
 
     [SerializeField] List<NoBuildZone> noBuildZones = new List<NoBuildZone>();
+
+    [Space(20)]
+
+    [SerializeField] GameObject cursorObject;
     [SerializeField] List<Sprite> buildingCursorSprites = new List<Sprite>();
 
+    [Space(20)]
     public GameObject MainBuilding;
     private void OnDrawGizmosSelected()
     {
@@ -77,6 +82,7 @@ public class BuildingManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        buildMode = false;
     }
 
     Dictionary<GameObject, Vector2Int> towers = new Dictionary<GameObject, Vector2Int>();
@@ -128,10 +134,17 @@ public class BuildingManager : MonoBehaviour
         }
     }
     
+    public bool buildMode { get; set; }
+
     void Update()
     {
-        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (buildMode)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.y = 0;
 
-        //Debug.DrawRay(GetIndices(mousePos)*step-playableArea/2, Vector3.up, Color.cyan, 0.1f);
+
+            //Debug.DrawRay(GetIndices(mousePos)*step-playableArea/2, Vector3.up, Color.cyan, 0.1f);
+        }
     }
 }

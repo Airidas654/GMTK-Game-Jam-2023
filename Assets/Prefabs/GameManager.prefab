@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4321274414986397569
 MonoBehaviour:
@@ -61,9 +61,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9f91354cd2a024398c6ce59adc8684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableArea: {x: 40, y: 20}
-  rectangleCount: {x: 20, y: 10}
+  playableArea: {x: 50, y: 40}
+  rectangleCount: {x: 25, y: 20}
   noBuildZones:
   - size: {x: 2, y: 2}
     position: {x: 0, y: 0}
+  cursorObject: {fileID: 0}
+  buildingCursorSprites:
+  - {fileID: 1567042486, guid: 25d22cd8b9d00e146af7cf56e6682be5, type: 3}
   MainBuilding: {fileID: 0}

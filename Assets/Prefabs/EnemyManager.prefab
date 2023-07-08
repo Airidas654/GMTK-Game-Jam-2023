@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4602062775390710242
 MonoBehaviour:
@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4129d2c4865e114fb34b1983e365181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notSpawnBox: {x: 19.6, y: 11.8}
+  notSpawnBox: {x: 43, y: 33}
   enemyPrefabs:
   - {fileID: 8616400693374126321, guid: 6932f540673a8b34c89c9cd4d0ba9108, type: 3}
