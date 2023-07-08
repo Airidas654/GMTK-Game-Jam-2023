@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         ////////////// Horizontal movement //////////////
         float horizontal;
         float vertical;
-        if (shoot.shooting)
+        if (shoot.shooting && GameManager.Instance.Playing)
         {
             horizontal = 0;
             vertical = 0;

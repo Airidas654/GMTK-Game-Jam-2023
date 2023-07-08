@@ -51,7 +51,7 @@ public class Shooting : MonoBehaviour
             cooldown -= Time.deltaTime;
             if (cooldown < 0) cooldown = 0;
         }
-        if (Input.GetMouseButtonDown(0) && cooldown == 0 && !UiManager.Instance.inBuildMode && game.water >= cost)
+        if (Input.GetMouseButtonDown(0) && cooldown == 0 && GameManager.Instance.Playing && !UiManager.Instance.inBuildMode && game.water >= cost)
         {
             if (EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null)
             {

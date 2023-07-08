@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
-        StartGame();
     }
 
     public bool EnoughWaterForSelectedBuilding()

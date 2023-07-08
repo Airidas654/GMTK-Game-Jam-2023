@@ -14,6 +14,7 @@ public class UiManager : MonoBehaviour
 
 
     public static UiManager Instance;
+    public static int survived;
 
     private float defaultY;
     [SerializeField] float BuildingBlockOffsetY;
@@ -21,6 +22,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] List<RectTransform> BuildingButtons;
 
     [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] Image black;
 
     public int selectedBuilding { get; private set; }
     public bool inBuildMode { get; private set; }
@@ -42,6 +44,9 @@ public class UiManager : MonoBehaviour
         defaultY = BuildingButtons[0].position.y;
         DOTween.Init();
         canShakeAgain = true;
+
+        DOTween.Kill(black.color);
+        DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 0), 1).OnComplete(() => { black.gameObject.SetActive(false); GameManager.Instance.StartGame(); }).SetEase(Ease.InOutCubic);
     }
 
     public void UpdateTimer(int time)
@@ -62,7 +67,7 @@ public class UiManager : MonoBehaviour
         {
             Transform obj = WaterBar.transform.parent;
             canShakeAgain = false;
-            obj.DOShakeRotation(1, 35, 7, 45, true).OnComplete(()=>canShakeAgain=true);
+            obj.DOShakeRotation(1, 35, 7, 45, true).OnComplete(() => canShakeAgain = true);
         }
     }
 
@@ -111,25 +116,28 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (GameManager.Instance.Playing)
         {
-            SelectBuilding(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SelectBuilding(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SelectBuilding(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SelectBuilding(3);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SelectBuilding(4);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                SelectBuilding(0);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SelectBuilding(1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                SelectBuilding(2);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                SelectBuilding(3);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                SelectBuilding(4);
+            }
         }
     }
 
