@@ -19,6 +19,7 @@ public class MainBullet : MonoBehaviour
         {
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
+        StartCoroutine(Deletion());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,11 +41,16 @@ public class MainBullet : MonoBehaviour
                     building.Replenish();
                     Destroy(gameObject);
                 }
-                
+
 
             }
         }
     }
 
+    IEnumerator Deletion()
+    {
+        yield return new WaitForSeconds(60);
+        Destroy(gameObject);
+    }
 
 }

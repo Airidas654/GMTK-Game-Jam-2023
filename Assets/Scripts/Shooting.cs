@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] float shootingCooldown;
     [SerializeField] int cost;
     public bool shooting;
+    bool shotOnce;
     GameManager game;
     float cooldown;
     Animator anim;
@@ -18,23 +19,29 @@ public class Shooting : MonoBehaviour
         game = GameManager.Instance;
         cooldown = 0;
         shooting = false;
+        shotOnce = false;
         anim = GetComponent<Animator>();
     }
 
     Vector2 mousepos;
     public void Shoot()
     {
-        Vector3 pos = transform.GetChild(0).position;
-        GameObject obj = Instantiate(BulletPrefab, pos, Quaternion.identity);
-        Vector2 dir = ((Vector2)Camera.main.ScreenToWorldPoint(mousepos) - (Vector2)pos).normalized;
-
-        obj.GetComponent<MainBullet>().OnInstance(dir);
+        if (!shotOnce)
+        {
+            Vector3 pos = transform.GetChild(0).position;
+            GameObject obj = Instantiate(BulletPrefab, pos, Quaternion.identity);
+            Vector2 dir = ((Vector2)mousepos - (Vector2)pos).normalized;
+            shotOnce = true;
+            obj.GetComponent<MainBullet>().OnInstance(dir);
+        }
     }
 
     public void DoneShooting()
     {
         anim.SetBool("Shooting", false);
         shooting = false;
+
+        shotOnce = false;
     }
 
     void Update()
@@ -44,15 +51,25 @@ public class Shooting : MonoBehaviour
             cooldown -= Time.deltaTime;
             if (cooldown < 0) cooldown = 0;
         }
-        if (Input.GetMouseButtonDown(0) && cooldown == 0 && game.water >= cost)
+        if (Input.GetMouseButtonDown(0) && cooldown == 0 && !UiManager.Instance.inBuildMode && game.water >= cost)
         {
             if (EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null)
             {
                 return;
             }
+            
             cooldown = shootingCooldown;
             game.SubtractWater(cost);
-            mousepos = Input.mousePosition;
+            mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (mousepos.x > transform.position.x)
+            {
+                transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            }
+            else
+            {
+                transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            }
             shooting = true;
             anim.SetBool("Shooting",true);
         }

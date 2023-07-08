@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
-  FlyingSpeed: 1
+  FlyingSpeed: 4
 --- !u!50 &8735847511024205345
 Rigidbody2D:
   serializedVersion: 4
