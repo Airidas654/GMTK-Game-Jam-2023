@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UiManager : MonoBehaviour
 {
@@ -30,13 +31,21 @@ public class UiManager : MonoBehaviour
         WaterBar.fillAmount = percent;
     }
 
-
-    
+    private float defaultY;
+    [SerializeField] float BuildingBlockOffsetY;
+    [SerializeField] float BuildingBlockOffsetDuration;
+    List<RectTransform> BuildingButtons;
     public void SelectBuilding(int building)
     {
         if(building == selectedBuilding)
         {
-
+            inBuildMode = false;
+            BuildingButtons[building].DOKill();
+            BuildingButtons[building].DOMoveY(defaultY+BuildingBlockOffsetY,BuildingBlockOffsetDuration).SetEase(Ease.InOutCubic);
+        }
+        else
+        {
+            inBuildMode = true;
         }
     }
 

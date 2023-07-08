@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public float PlayingTime { get; private set; }
 
     public bool Playing { get; private set; }
-
+    public GameObject Player;
 
     public static GameManager Instance;
     private void Awake()
@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
         water = 0;
         pumpHealth = pumpMaxHealth;
         Playing = false;
+    }
+
+    private void Start()
+    {
+        Player = GameObject.FindWithTag("Player");
     }
 
     public void AddWater(int amount)
