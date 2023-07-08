@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] Vector2 notSpawnBox;
     [SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 
-    ObjectPool<GameObject> enemies;
+    public ObjectPool<GameObject> enemies;
 
     public void Start()
     {
