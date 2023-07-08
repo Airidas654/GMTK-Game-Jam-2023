@@ -108,6 +108,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Playing = false;
+        UiManager.survived = (int)MaxTime - Mathf.CeilToInt(RemainingTime);
+        UiManager.Instance.ReturnToMeniu();
     }
 
     private void Update()
@@ -117,6 +119,11 @@ public class GameManager : MonoBehaviour
             RemainingTime -= Time.deltaTime;
             RemainingTime = Mathf.Max(0, RemainingTime);
             UiManager.Instance.UpdateTimer(Mathf.CeilToInt(RemainingTime));
+        }else if (Playing && EnemyManager.Instance.GetAliveEnemyCount() == 0)
+        {
+            Playing = false;
+            UiManager.survived = -1;
+            UiManager.Instance.ReturnToMeniu();
         }
     }
 
