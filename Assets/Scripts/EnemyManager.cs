@@ -11,9 +11,15 @@ public class EnemyManager : MonoBehaviour
 
     public ObjectPool<GameObject> enemies;
 
+    HashSet<GameObject> aliveEnemies = new HashSet<GameObject>();
+
+    public int GetAliveEnemyCount()
+    {
+        return aliveEnemies.Count;
+    }
+
     public void Start()
     {
-        
         enemies = new ObjectPool<GameObject>(CreateEnemy, GetEnemy, ReleaseEnemy);
         //StartCoroutine(testas());
     }
@@ -39,7 +45,30 @@ public class EnemyManager : MonoBehaviour
     
     void ReleaseEnemy(GameObject obj)
     {
+        aliveEnemies.Remove(obj);
         obj.SetActive(false);
+    }
+
+    public GameObject FindClosest(Vector2 pos)
+    {
+        float dist = Mathf.Infinity;
+        GameObject ans = null;
+
+        foreach (var tow in aliveEnemies)
+        {
+            if (tow != null)
+            {
+                Vector2 temp = tow.transform.position;
+                float sqrtMag = (temp - pos).sqrMagnitude;
+                if (sqrtMag < dist)
+                {
+                    dist = sqrtMag;
+                    ans = tow;
+                }
+            }
+        }
+
+        return ans;
     }
 
     Vector3 GetNewSpawnPosition()
@@ -75,6 +104,7 @@ public class EnemyManager : MonoBehaviour
     {
         GameObject obj = enemies.Get();
         obj.transform.position = GetNewSpawnPosition();
+        aliveEnemies.Add(obj);
 
         obj.GetComponent<Enemy>().SetTarget(BuildingManager.Instance.MainBuilding.transform.position);
     }

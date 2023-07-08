@@ -21,12 +21,16 @@ public class Building : MonoBehaviour
     float growthVal;
     float step;
 
-    SpriteRenderer spriteRenderer;
-    Animator animator;
+    protected SpriteRenderer spriteRenderer;
+    protected Animator animator;
     private void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
+
+        bool randFlip = Random.Range(0, 2) == 0 ? true : false;
+        spriteRenderer.flipX = randFlip;
+
         growthVal = 0;
         step = growthTime / (growthSprites.Count - 1);
     }
@@ -66,7 +70,7 @@ public class Building : MonoBehaviour
     }
 
     
-    void Update()
+    public void Update()
     {
         if (grown)
         {
