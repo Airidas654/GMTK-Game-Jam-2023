@@ -23,7 +23,7 @@ public class Building : MonoBehaviour
 
     protected SpriteRenderer spriteRenderer;
     protected Animator animator;
-    private void Start()
+    public void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();

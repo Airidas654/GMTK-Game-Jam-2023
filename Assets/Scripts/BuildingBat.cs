@@ -9,12 +9,17 @@ public class BuildingBat : Building
     [SerializeField] float enemyHitRange = 1f;
     [SerializeField] float damage = 1f;
 
-    bool hitFlag;
     bool canHit = false;
 
     public void HitAnimation()
     {
         canHit = true;
+    }
+    int animParameterId;
+    private new void Start()
+    {
+        base.Start();
+        animParameterId = Animator.StringToHash("IsHitting");
     }
 
     private void OnDrawGizmosSelected()
@@ -33,7 +38,7 @@ public class BuildingBat : Building
             GameObject closest = EnemyManager.Instance.FindClosest(transform.position);
             if (closest == null)
             {
-                animator.SetBool(0, false);
+                animator.SetBool(animParameterId, false);
                 return;
             }
 
@@ -55,7 +60,7 @@ public class BuildingBat : Building
 
             if (distSqr <= enemyHitRange * enemyHitRange)
             {
-                animator.SetBool(0, true);
+                animator.SetBool(animParameterId, true);
 
                 if (canHit)
                 {
@@ -66,7 +71,7 @@ public class BuildingBat : Building
             else
             {
                 canHit = false;
-                animator.SetBool(0, false);
+                animator.SetBool(animParameterId, false);
             }
         }
     }
