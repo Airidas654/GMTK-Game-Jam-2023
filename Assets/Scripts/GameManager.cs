@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public bool Playing { get; private set; }
     public GameObject Player;
+    public Vector2 WorldBorders;
 
     public static GameManager Instance;
     private void Awake()

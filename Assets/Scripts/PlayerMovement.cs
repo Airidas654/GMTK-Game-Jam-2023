@@ -126,6 +126,10 @@ public class PlayerMovement : MonoBehaviour
 
         rigid.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * movingSpeed;
 
+        Vector2 borders = GameManager.Instance.WorldBorders;
+        float scale = transform.lossyScale.y / 2;
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -borders.x, borders.x), Mathf.Clamp(transform.position.y, -borders.y-scale, borders.y-scale));
+
         if (rigid.velocity.magnitude <= float.Epsilon)
         {
             anim.SetBool("Moving", false);
