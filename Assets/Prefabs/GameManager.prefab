@@ -79,4 +79,7 @@ MonoBehaviour:
   buildingPrefabs:
   - {fileID: 1411438347627607882, guid: 373082380af0a4845a15eed0a67099d5, type: 3}
   - {fileID: 1411438347627607882, guid: 34061e1e205941e48a4d8daaf2455009, type: 3}
+  - {fileID: 1411438347627607882, guid: 89bab568e22ae2d4db83c1fbf173a5aa, type: 3}
+  - {fileID: 1411438347627607882, guid: 4929fcb7bbba6a4468cccfb79164397e, type: 3}
+  - {fileID: 1411438347627607882, guid: d9f99b277f328074cb5304b82d5beb7d, type: 3}
   MainBuilding: {fileID: 0}
