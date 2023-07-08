@@ -47,8 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxWaterInBar: 20
   pumpMaxHealth: 100
+  MaxTime: 600
   Player: {fileID: 0}
   WorldBorders: {x: 20, y: 15}
+  BuildingCosts: 050000000a000000020000000100000005000000
 --- !u!114 &3567363691100380481
 MonoBehaviour:
   m_ObjectHideFlags: 0

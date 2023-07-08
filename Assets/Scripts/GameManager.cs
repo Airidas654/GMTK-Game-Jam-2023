@@ -6,15 +6,18 @@ public class GameManager : MonoBehaviour
 {
     public int water { get; private set; }
     int imaginaryWater;
-    [SerializeField] int MaxWaterInBar;
+    public int MaxWaterInBar;
     public float pumpHealth { get; private set; }
     [SerializeField] float pumpMaxHealth;
 
-    public float PlayingTime { get; private set; }
+    public float RemainingTime { get; private set; }
+    [SerializeField] float MaxTime;
 
     public bool Playing { get; private set; }
     public GameObject Player;
     public Vector2 WorldBorders;
+
+    public List<int> BuildingCosts;
 
     public static GameManager Instance;
 
@@ -44,6 +47,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
+        StartGame();
+    }
+
+    public bool EnoughWaterForSelectedBuilding()
+    {
+        return water >= BuildingCosts[UiManager.Instance.selectedBuilding];
     }
 
     public void AddImaginaryWater(int amount)
@@ -88,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        PlayingTime = 0;
+        RemainingTime = MaxTime;
         Playing = true;
     }
 
@@ -99,9 +108,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Playing)
+        if (Playing && RemainingTime > 0)
         {
-            PlayingTime += Time.deltaTime;
+            RemainingTime -= Time.deltaTime;
+            RemainingTime = Mathf.Max(0, RemainingTime);
+            UiManager.Instance.UpdateTimer(Mathf.CeilToInt(RemainingTime));
         }
     }
 

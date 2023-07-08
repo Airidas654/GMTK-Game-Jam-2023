@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] float BuildingBlockOffsetY;
     [SerializeField] float BuildingBlockOffsetDuration;
     [SerializeField] List<RectTransform> BuildingButtons;
+
+    [SerializeField] TextMeshProUGUI timer;
 
     public int selectedBuilding { get; private set; }
     public bool inBuildMode { get; private set; }
@@ -38,6 +41,11 @@ public class UiManager : MonoBehaviour
     {
         defaultY = BuildingButtons[0].position.y;
         DOTween.Init();
+    }
+
+    public void UpdateTimer(int time)
+    {
+        timer.text = string.Format("{0:D2}:{1:D2}", time / 60, time % 60);
     }
 
     public void UpdateWaterBar(float percent)
@@ -79,7 +87,7 @@ public class UiManager : MonoBehaviour
                 BuildingButtons[selectedBuilding].DOMoveY(defaultY, BuildingBlockOffsetDuration).SetEase(Ease.InOutCubic);
             }
             selectedBuilding = building;
-            EnableRequiredWaterBar(0.5f);
+            EnableRequiredWaterBar((float)GameManager.Instance.BuildingCosts[selectedBuilding] / GameManager.Instance.MaxWaterInBar);
         }
     }
 
