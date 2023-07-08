@@ -32,7 +32,8 @@ public class Enemy : MonoBehaviour
         if (health <= 0 && !dead)
         {
             dead = true;
-            Destroy(gameObject);
+            EnemyManager.Instance.enemies.Release(gameObject);
+            //Destroy(gameObject);
         }
     }
 
