@@ -23,6 +23,7 @@ public class BuildingManager : MonoBehaviour
 
     [Space(20)]
 
+    [SerializeField] Material cursorObjectMaterial;
     [SerializeField] GameObject cursorObject;
     [SerializeField] List<Sprite> buildingCursorSprites = new List<Sprite>();
     [SerializeField] List<GameObject> buildingPrefabs = new List<GameObject>();
@@ -138,6 +139,12 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
+    bool CanPlace(Vector3 pos)
+    {
+        Vector2Int indices = GetIndices(pos);
+        return !occupied[indices.y, indices.x];
+    }
+
     bool buildMode;
     int selectedBuilding;
 
@@ -187,17 +194,25 @@ public class BuildingManager : MonoBehaviour
             mousePos.z = 0;
 
             cursorObject.transform.position = GetIndices(mousePos) * step - playableArea / 2 + step / 2;
-            
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !(EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null))
+
+            if (CanPlace(mousePos))
             {
-                if (GameManager.Instance.EnoughWaterForSelectedBuilding())
+                cursorObjectMaterial.color = Color.white;
+                if (Input.GetKeyDown(KeyCode.Mouse0) && !(EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null))
                 {
-                    GameManager.Instance.SubtractWater(GameManager.Instance.BuildingCosts[selectedBuilding]);
-                    GameObject obj = Instantiate(buildingPrefabs[selectedBuilding], cursorObject.transform.position, Quaternion.identity);
-                    obj.transform.localScale = Vector3.zero;
-                    obj.transform.DOScale(1, 1).SetEase(Ease.OutBounce);
-                    AddTower(obj);
+                    if (GameManager.Instance.EnoughWaterForSelectedBuilding())
+                    {
+                        GameManager.Instance.SubtractWater(GameManager.Instance.BuildingCosts[selectedBuilding]);
+                        GameObject obj = Instantiate(buildingPrefabs[selectedBuilding], cursorObject.transform.position, Quaternion.identity);
+                        obj.transform.localScale = Vector3.zero;
+                        obj.transform.DOScale(1, 1).SetEase(Ease.OutBounce);
+                        AddTower(obj);
+                    }
                 }
+            }
+            else
+            {
+                cursorObjectMaterial.color = new Color(1, 74 / 255f, 74 / 255f);
             }
         }
     }
