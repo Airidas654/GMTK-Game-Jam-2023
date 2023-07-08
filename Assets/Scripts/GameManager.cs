@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int water { get; private set; }
+    int imaginaryWater;
     [SerializeField] int MaxWaterInBar;
     public float pumpHealth { get; private set; }
     [SerializeField] float pumpMaxHealth;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         water = 0;
+        imaginaryWater = 0;
         pumpHealth = pumpMaxHealth;
         Playing = false;
     }
@@ -36,21 +38,35 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
     }
 
+    public void AddImaginaryWater(int amount)
+    {
+        imaginaryWater += amount;
+        imaginaryWater = Mathf.Min(imaginaryWater, MaxWaterInBar);
+    }
+
     public void AddWater(int amount)
     {
         water += amount;
+        water = Mathf.Min(water, MaxWaterInBar);
         UiManager.Instance.UpdateWaterBar((float)water / MaxWaterInBar);
+        
     }
 
     public void SubtractWater(int amount)
     {
         water = Mathf.Max(water - amount, 0);
+        imaginaryWater = water;
         UiManager.Instance.UpdateWaterBar((float)water / MaxWaterInBar);
     }
 
     public bool MaxWaterReached()
     {
         return water >= MaxWaterInBar;
+    }
+
+    public bool MaxImaginaryWaterReached()
+    {
+        return imaginaryWater >= MaxWaterInBar;
     }
 
     public void DamagePump(float damage)

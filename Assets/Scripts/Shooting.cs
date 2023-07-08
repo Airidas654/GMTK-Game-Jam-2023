@@ -22,12 +22,10 @@ public class Shooting : MonoBehaviour
     Vector2 mousepos;
     public void Shoot()
     {
-        GameObject obj = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
-        Vector2 dir = Camera.main.ScreenToWorldPoint(mousepos) - transform.position;
-        if (dir.x == 0 && dir.y == 0)
-        {
-            dir /= Mathf.Sqrt(dir.x * dir.x + dir.y * dir.y);
-        }
+        Vector3 pos = transform.GetChild(0).position;
+        GameObject obj = Instantiate(BulletPrefab, pos, Quaternion.identity);
+        Vector2 dir = ((Vector2)Camera.main.ScreenToWorldPoint(mousepos) - (Vector2)pos).normalized;
+
         obj.GetComponent<MainBullet>().OnInstance(dir);
     }
 
