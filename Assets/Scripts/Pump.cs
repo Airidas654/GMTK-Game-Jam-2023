@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using DG.Tweening;
 
 public class Pump : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Pump : MonoBehaviour
     {
         drops = new ObjectPool<GameObject>(CreateDrop,GetDrop, ReleaseDrop);
         spawnVal = dropSpawnTime;
+
+        Transform obj = transform.GetChild(0);
+        obj.DOMoveY(obj.transform.position.y + 0.1f, 2).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutQuad);
     }
 
     private void Awake()
