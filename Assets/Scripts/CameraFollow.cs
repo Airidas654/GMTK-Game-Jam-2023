@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour
     Transform target; // Reference to the player object
 
     Vector2 CameraBorders;
+    [SerializeField] float WeightToTarget; // 0 camera in position (0,0), 1 camera on player
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = new Vector3(Mathf.Clamp(target.position.x / 2, -CameraBorders.x, CameraBorders.x), Mathf.Clamp(target.position.y / 2, -CameraBorders.y, CameraBorders.y), transform.position.z);
+            transform.position = new Vector3(Mathf.Clamp(target.position.x * WeightToTarget, -CameraBorders.x, CameraBorders.x), Mathf.Clamp(target.position.y * WeightToTarget, -CameraBorders.y, CameraBorders.y), transform.position.z);
         }
     }
 }
