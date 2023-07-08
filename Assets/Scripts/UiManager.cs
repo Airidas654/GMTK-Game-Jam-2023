@@ -42,10 +42,19 @@ public class UiManager : MonoBehaviour
             inBuildMode = false;
             BuildingButtons[building].DOKill();
             BuildingButtons[building].DOMoveY(defaultY+BuildingBlockOffsetY,BuildingBlockOffsetDuration).SetEase(Ease.InOutCubic);
+            selectedBuilding = -1;
         }
         else
         {
             inBuildMode = true;
+            BuildingButtons[building].DOKill();
+            BuildingButtons[building].DOMoveY(defaultY + BuildingBlockOffsetY, BuildingBlockOffsetDuration).SetEase(Ease.InOutCubic);
+            if(selectedBuilding != -1)
+            {
+                BuildingButtons[selectedBuilding].DOKill();
+                BuildingButtons[selectedBuilding].DOMoveY(defaultY, BuildingBlockOffsetDuration).SetEase(Ease.InOutCubic);
+            }
+            selectedBuilding = building;
         }
     }
 
