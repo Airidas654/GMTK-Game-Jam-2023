@@ -12,6 +12,24 @@ public class Building : MonoBehaviour
     [SerializeField] float replenishVal = 0.5f;
 
     protected bool working = true;
+    protected bool grown = false;
+
+    [Space(20)]
+    [SerializeField] List<Sprite> growthSprites = new List<Sprite>();
+    [SerializeField] float growthTime = 20f;
+
+    float growthVal;
+    float step;
+
+    SpriteRenderer spriteRenderer;
+    Animator animator;
+    private void Start()
+    {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        animator = gameObject.GetComponent<Animator>();
+        growthVal = 0;
+        step = growthTime / (growthSprites.Count - 1);
+    }
 
     public bool NeedsWater()
     {
@@ -50,16 +68,32 @@ public class Building : MonoBehaviour
     
     void Update()
     {
-        waterVal -= 1 / waterDepletionTimeInSec * Time.deltaTime;
-        waterVal = Mathf.Max(0, waterVal);
-
-        if (waterVal == 0)
+        if (grown)
         {
-            working = false;
+            waterVal -= 1 / waterDepletionTimeInSec * Time.deltaTime;
+            waterVal = Mathf.Max(0, waterVal);
+
+            if (waterVal == 0)
+            {
+                working = false;
+            }
+            else
+            {
+                working = true;
+            }
         }
         else
         {
-            working = true;
+            growthVal += Time.deltaTime;
+
+            spriteRenderer.sprite = growthSprites[Mathf.Max(0, Mathf.Min(Mathf.FloorToInt(growthVal/step), growthSprites.Count-1))];
+
+            if (growthVal >= growthTime)
+            {
+                spriteRenderer.sprite = growthSprites[growthSprites.Count - 1];
+                animator.enabled = true;
+                grown = true;
+            }
         }
     }
 }
