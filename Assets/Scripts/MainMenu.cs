@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
             black.gameObject.SetActive(true);
             DOTween.Kill(black.color);
             once = true;
-            DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 1), 1).SetEase(Ease.InOutCubic).OnComplete(() => SceneManager.LoadScene(1));
+            DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 1), 1).SetEase(Ease.InOutCubic).OnComplete(() => { DOTween.KillAll(); SceneManager.LoadScene(1); });
         }
     }
 }
