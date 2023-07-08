@@ -13,7 +13,9 @@ public class EnemyManager : MonoBehaviour
 
     public void Start()
     {
+        
         enemies = new ObjectPool<GameObject>(CreateEnemy, GetEnemy, ReleaseEnemy);
+        //StartCoroutine(testas());
     }
 
     public void OnDrawGizmosSelected()
