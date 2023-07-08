@@ -50,6 +50,11 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
     }
 
+    public float GetElapsedTime()
+    {
+        return MaxTime - RemainingTime;
+    }
+
     public bool EnoughWaterForSelectedBuilding()
     {
         return water >= BuildingCosts[UiManager.Instance.selectedBuilding];

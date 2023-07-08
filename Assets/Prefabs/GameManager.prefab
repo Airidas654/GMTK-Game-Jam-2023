@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2517803179617001798}
   - component: {fileID: 4321274414986397569}
   - component: {fileID: 3567363691100380481}
+  - component: {fileID: 2448517573520734771}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -83,3 +84,20 @@ MonoBehaviour:
   - {fileID: 1411438347627607882, guid: 4929fcb7bbba6a4468cccfb79164397e, type: 3}
   - {fileID: 1411438347627607882, guid: d9f99b277f328074cb5304b82d5beb7d, type: 3}
   MainBuilding: {fileID: 0}
+--- !u!114 &2448517573520734771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114972176643473605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05987c10a9dbea34781fa634ef17da6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Waves:
+  - TimeToStart: 5
+    EnemiesCount: 3
+  - TimeToStart: 10
+    EnemiesCount: 10
