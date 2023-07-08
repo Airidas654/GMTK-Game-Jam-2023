@@ -38,7 +38,9 @@ public class GameManager : MonoBehaviour
     public void AddWater(int amount)
     {
         water += amount;
+        water = Mathf.Max(water, MaxWaterInBar);
         UiManager.Instance.UpdateWaterBar((float)water / MaxWaterInBar);
+        
     }
 
     public void SubtractWater(int amount)
