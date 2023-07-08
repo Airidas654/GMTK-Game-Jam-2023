@@ -41,6 +41,7 @@ public class UiManager : MonoBehaviour
     {
         defaultY = BuildingButtons[0].position.y;
         DOTween.Init();
+        canShakeAgain = true;
     }
 
     public void UpdateTimer(int time)
@@ -52,6 +53,17 @@ public class UiManager : MonoBehaviour
     {
         DOTween.Kill(WaterBar.fillAmount);
         DOTween.To(() => WaterBar.fillAmount, x => WaterBar.fillAmount = x, percent, WaterBarDuration);
+    }
+
+    bool canShakeAgain;
+    public void DoWaterShake()
+    {
+        if (canShakeAgain)
+        {
+            Transform obj = WaterBar.transform.parent;
+            canShakeAgain = false;
+            obj.DOShakeRotation(1, 35, 7, 45, true).OnComplete(()=>canShakeAgain=true);
+        }
     }
 
     public void EnableRequiredWaterBar(float percent)
