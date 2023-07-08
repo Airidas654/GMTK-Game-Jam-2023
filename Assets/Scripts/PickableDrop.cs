@@ -34,28 +34,33 @@ public class PickableDrop : MonoBehaviour
 
     Tween seekTween;
     float tweenVal;
+    Vector3 pradPos;
     void Update()
     {
-        if (canSeek && !GameManager.Instance.MaxWaterReached())
+        if (canSeek && !GameManager.Instance.MaxImaginaryWaterReached())
         {
             Vector3 playerPos = GameManager.Instance.Player.transform.position;
             if ((playerPos-transform.position).sqrMagnitude <= seekDist * seekDist)
             {
                 canSeek = false;
                 seek = true;
-                seekTween = DOTween.To(()=>0f,x=>tweenVal = x,1f,0.5f).SetEase(Ease.Linear).OnComplete(()=>
+                pradPos = transform.position;
+                transform.DOScale(0, 0.5f).SetEase(Ease.InOutCubic).Play();
+                GameManager.Instance.AddImaginaryWater(waterAmount);
+                seekTween = DOTween.To(()=>0f,x=>tweenVal = x,1f,0.5f).SetEase(Ease.InOutCubic).OnComplete(()=>
                 {
+                    
                     Pump.Instance.drops.Release(gameObject);
                     GameManager.Instance.AddWater(waterAmount);
                 });
                 
             }
         }
-
+        
         if (seek)
         {
             Vector3 playerPos = GameManager.Instance.Player.transform.position;
-            transform.position = Vector3.Lerp(transform.position, playerPos, tweenVal);
+            transform.position = Vector3.Lerp(pradPos, playerPos, tweenVal);
         }
     }
 }
