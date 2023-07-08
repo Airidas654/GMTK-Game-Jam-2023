@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using DG.Tweening;
 
 public class PickableDrop : MonoBehaviour
@@ -32,6 +33,17 @@ public class PickableDrop : MonoBehaviour
         transform.DOMove(randPos, 1).SetEase(Ease.OutCubic).Play().OnComplete(()=>canSeek = true);
     }
 
+    ObjectPool<GameObject> dropletPool = null;
+
+    public void Reset(ObjectPool<GameObject> buildingWater, int waterAmount, float randDist)
+    {
+        Reset();
+
+        dropletPool = buildingWater;
+        this.waterAmount = waterAmount;
+        this.randDist = randDist;
+    }
+
     Tween seekTween;
     float tweenVal;
     Vector3 pradPos;
@@ -49,8 +61,14 @@ public class PickableDrop : MonoBehaviour
                 GameManager.Instance.AddImaginaryWater(waterAmount);
                 seekTween = DOTween.To(()=>0f,x=>tweenVal = x,1f,0.5f).SetEase(Ease.InOutCubic).OnComplete(()=>
                 {
-                    
-                    Pump.Instance.drops.Release(gameObject);
+                    if (dropletPool == null)
+                    {
+                        Pump.Instance.drops.Release(gameObject);
+                    }
+                    else
+                    {
+                        dropletPool.Release(gameObject);
+                    }
                     GameManager.Instance.AddWater(waterAmount);
                 });
                 
