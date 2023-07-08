@@ -71,6 +71,9 @@ public class UiManager : MonoBehaviour
         if (building == selectedBuilding)
         {
             inBuildMode = false;
+
+            BuildingManager.Instance.BuildMode = false;
+
             BuildingButtons[building].DOKill();
             BuildingButtons[building].DOMoveY(defaultY, BuildingBlockOffsetDuration).SetEase(Ease.InOutCubic);
             selectedBuilding = -1;
@@ -78,6 +81,9 @@ public class UiManager : MonoBehaviour
         }
         else
         {
+            BuildingManager.Instance.SelectedBuilding = building;
+            BuildingManager.Instance.BuildMode = true;
+
             inBuildMode = true;
             BuildingButtons[building].DOKill();
             BuildingButtons[building].DOMoveY(defaultY + BuildingBlockOffsetY, BuildingBlockOffsetDuration).SetEase(Ease.InOutCubic);

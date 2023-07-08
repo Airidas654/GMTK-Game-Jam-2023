@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class BuildingManager : MonoBehaviour
 
     [SerializeField] GameObject cursorObject;
     [SerializeField] List<Sprite> buildingCursorSprites = new List<Sprite>();
+    [SerializeField] List<GameObject> buildingPrefabs = new List<GameObject>();
 
     [Space(20)]
     public GameObject MainBuilding;
@@ -82,7 +85,8 @@ public class BuildingManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        buildMode = false;
+        BuildMode = false;
+        SelectedBuilding = 0;
     }
 
     Dictionary<GameObject, Vector2Int> towers = new Dictionary<GameObject, Vector2Int>();
@@ -90,7 +94,7 @@ public class BuildingManager : MonoBehaviour
     Vector2Int GetIndices(Vector2 position)
     {
         Vector2 newPos = position + new Vector2(playableArea.x / 2, playableArea.y / 2);
-        newPos = Vector3.Max(Vector3.zero, Vector3.Min(newPos, playableArea));
+        newPos = Vector2.Max(Vector2.zero, Vector2.Min(newPos, playableArea));
 
         return new Vector2Int(Mathf.FloorToInt(newPos.x / step.x), Mathf.FloorToInt(newPos.y / step.y));
     }
@@ -133,18 +137,68 @@ public class BuildingManager : MonoBehaviour
             towers.Remove(obj);
         }
     }
-    
-    public bool buildMode { get; set; }
+
+    bool buildMode;
+    int selectedBuilding;
+
+    public bool BuildMode {
+        get
+        {
+            return buildMode;
+        }
+        
+        set 
+        {
+            buildMode = value;
+            cursorObject.transform.DOKill();
+
+            float tweenVal = buildMode ? 1 : 0;
+
+            if (buildMode)
+            {
+                cursorObject.SetActive(true);
+            }
+
+            cursorObject.transform.DOScale(tweenVal, 0.5f).SetEase(Ease.InOutCirc).OnComplete(() =>
+            {
+                cursorObject.SetActive(value);
+            });
+        } 
+    }
+
+    public int SelectedBuilding
+    {
+        get
+        {
+            return selectedBuilding;
+        }
+        set
+        {
+            selectedBuilding = Mathf.Max(0,Mathf.Min(value, buildingCursorSprites.Count-1));
+            cursorObject.GetComponent<SpriteRenderer>().sprite = buildingCursorSprites[selectedBuilding];
+        }
+    }
 
     void Update()
     {
         if (buildMode)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.y = 0;
+            mousePos.z = 0;
 
-
-            //Debug.DrawRay(GetIndices(mousePos)*step-playableArea/2, Vector3.up, Color.cyan, 0.1f);
+            cursorObject.transform.position = GetIndices(mousePos) * step - playableArea / 2 + step / 2;
+            
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !(EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null))
+            {
+                if (GameManager.Instance.EnoughWaterForSelectedBuilding())
+                {
+                    GameManager.Instance.SubtractWater(GameManager.Instance.BuildingCosts[selectedBuilding]);
+                    GameObject obj = Instantiate(buildingPrefabs[selectedBuilding], cursorObject.transform.position, Quaternion.identity);
+                    obj.transform.localScale = Vector3.zero;
+                    obj.transform.DOScale(1, 1).SetEase(Ease.OutBounce);
+                    AddTower(obj);
+                }
+            }
         }
     }
 }
