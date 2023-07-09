@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MainBullet : MonoBehaviour
 {
@@ -15,9 +16,15 @@ public class MainBullet : MonoBehaviour
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         oneTime = true;
         rigid.velocity = flyingDirection * FlyingSpeed;
+
+        transform.localScale = Vector2.zero;
+
+        transform.DOScale(1, 0.5f).SetEase(Ease.OutQuad);
+
         if (rigid.velocity.x < 0)
         {
-            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+            GetComponent<SpriteRenderer>().flipX = true;
+            //transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
         StartCoroutine(Deletion());
     }
@@ -30,7 +37,11 @@ public class MainBullet : MonoBehaviour
             {
                 oneTime = false;
                 collision.GetComponent<Enemy>().TakeDamage(Damage);
-                Destroy(gameObject);
+                transform.DOScale(0, 0.2f).SetEase(Ease.OutQuart).OnComplete(()=>
+                {
+                    Destroy(gameObject);
+                });
+                
             }
             else if (collision.CompareTag("Building"))
             {
@@ -39,7 +50,10 @@ public class MainBullet : MonoBehaviour
                 {
                     oneTime = false;
                     building.Replenish();
-                    Destroy(gameObject);
+                    transform.DOScale(0, 0.2f).SetEase(Ease.OutQuart).OnComplete(() =>
+                    {
+                        Destroy(gameObject);
+                    });
                 }
 
 

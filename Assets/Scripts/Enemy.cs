@@ -35,6 +35,10 @@ public class Enemy : MonoBehaviour
 
     public void Reset()
     {
+        Color col = spriteRenderer.color;
+        col.a = 0;
+        spriteRenderer.color = col;
+
         stopped = false;
         dead = false;
         pump = Pump.Instance.gameObject;
