@@ -13,16 +13,37 @@ public class Enemy : MonoBehaviour
     bool stopped = false;
     bool dead = false;
 
+    SpriteRenderer spriteRenderer;
+    Animator animator;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, hitDistance);
     }
 
+    int animIndex;
+
+    private void Awake()
+    {
+        animIndex = Animator.StringToHash("EnemyHit");
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        animator = gameObject.GetComponent<Animator>();
+    }
+
+    GameObject pump;
+
     public void Reset()
     {
         stopped = false;
         dead = false;
+        pump = Pump.Instance.gameObject;
+    }
+
+    bool canHit = false;
+    public void AnimationHit()
+    {
+        canHit = true;
     }
 
     public void TakeDamage(float damage)
@@ -39,6 +60,14 @@ public class Enemy : MonoBehaviour
 
     public void SetTarget(Vector3 pos)
     {
+        if (pos.x - transform.position.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
         target = pos;
     }
 
@@ -49,13 +78,35 @@ public class Enemy : MonoBehaviour
 
 
         GameObject obj = BuildingManager.Instance.FindClosest(transform.position);
-        if (obj != null && (obj.transform.position - transform.position).sqrMagnitude < hitDistance*hitDistance)
+        if (obj == null || (((Vector2)obj.transform.position - (Vector2)transform.position).sqrMagnitude >= ((Vector2)pump.transform.position - (Vector2)transform.position).sqrMagnitude))
+        {
+            obj = pump;
+        }
+
+        if (obj != null && ((Vector2)obj.transform.position - (Vector2)transform.position).sqrMagnitude < hitDistance*hitDistance)
         {
             //buildingManager.Hit(damage)
+            animator.SetBool(animIndex, true);
             stopped = true;
+
+           
+            if (canHit)
+            {
+                canHit = false;
+                if (obj == pump)
+                {
+                    GameManager.Instance.DamagePump(damage);
+                }
+                else
+                {
+                    obj.GetComponent<Building>().TakeDamage(damage);
+                }
+            }
         }
         else
         {
+            animator.SetBool(animIndex, false);
+            canHit = false;
             stopped = false;
         }
 

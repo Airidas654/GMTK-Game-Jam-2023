@@ -16,7 +16,7 @@ public class ShotTrail : MonoBehaviour
 
         Vector3 dir = (from - to) / dist;
 
-        transform.rotation = Quaternion.LookRotation(dir, new Vector3(0, 0, -1));
+        transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), dir);
         transform.position = (from + to) / 2;
         transform.localScale = new Vector3(transform.localScale.x, dist, 1);
 
