@@ -215,6 +215,10 @@ public class BuildingManager : MonoBehaviour
                         obj.transform.DOScale(1, 1).SetEase(Ease.OutBounce);
                         AddTower(obj);
                     }
+                    else
+                    {
+                        UiManager.Instance.DoWaterShake();
+                    }
                 }
             }
             else

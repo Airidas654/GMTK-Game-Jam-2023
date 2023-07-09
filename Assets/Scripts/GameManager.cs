@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
             if (canShakeCamera)
             {
                 canShakeCamera = false;
-                camTrans.DOShakeRotation(0.1f, new Vector3(0, 0, 5), 1, 10, true, ShakeRandomnessMode.Full).OnComplete(() =>
+                camTrans.DOShakeRotation(0.1f, new Vector3(0, 0, 2), 1, 10, true, ShakeRandomnessMode.Full).OnComplete(() =>
                 {
                     camTrans.DOKill();
                     canShakeCamera = true;
