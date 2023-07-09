@@ -166,7 +166,7 @@ MonoBehaviour:
     EnemiesCount: 4
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2
-  - TimeToStart: 250
+  - TimeToStart: 265
     EnemiesCount: 5
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2
@@ -174,3 +174,63 @@ MonoBehaviour:
     EnemiesCount: 15
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 0.75
+  - TimeToStart: 330
+    EnemiesCount: 5
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2
+  - TimeToStart: 340
+    EnemiesCount: 3
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2
+  - TimeToStart: 350
+    EnemiesCount: 1
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2
+  - TimeToStart: 380
+    EnemiesCount: 1
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 5
+  - TimeToStart: 410
+    EnemiesCount: 3
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2.5
+  - TimeToStart: 450
+    EnemiesCount: 5
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2.5
+  - TimeToStart: 470
+    EnemiesCount: 3
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2.5
+  - TimeToStart: 500
+    EnemiesCount: 7
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1.5
+  - TimeToStart: 530
+    EnemiesCount: 10
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
+  - TimeToStart: 550
+    EnemiesCount: 4
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2.5
+  - TimeToStart: 560
+    EnemiesCount: 3
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1.5
+  - TimeToStart: 600
+    EnemiesCount: 10
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
+  - TimeToStart: 600
+    EnemiesCount: 4
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1.5
+  - TimeToStart: 600
+    EnemiesCount: 2
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2
+  - TimeToStart: 600
+    EnemiesCount: 1
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2.5
