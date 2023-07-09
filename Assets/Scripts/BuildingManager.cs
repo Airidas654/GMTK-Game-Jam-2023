@@ -59,16 +59,22 @@ public class BuildingManager : MonoBehaviour
 
         for (int l = 0; l < noBuildZones.Count; l++)
         {
-            int nuoY, ikiY, nuoX, ikiX;
-            nuoY = Mathf.FloorToInt(noBuildZones[l].position.y - noBuildZones[l].size.y / 2);
-            nuoX = Mathf.FloorToInt(noBuildZones[l].position.x - noBuildZones[l].size.x / 2);
+            //int nuoY, ikiY, nuoX, ikiX;
 
-            ikiY = Mathf.CeilToInt(noBuildZones[l].position.y + noBuildZones[l].size.y / 2);
-            ikiX = Mathf.CeilToInt(noBuildZones[l].position.x + noBuildZones[l].size.x / 2);
+            //Vector2 halfPlayArea = new Vector2(playableArea.x / 4, playableArea.y / 4);
 
-            for (int i = Mathf.Max(nuoY,0); i <= Mathf.Min(ikiY, rectangleCount.y-1); i++)
+            Vector2Int nuo = GetIndices(noBuildZones[l].position - noBuildZones[l].size / 2);
+            Vector2Int iki = GetIndices(noBuildZones[l].position + noBuildZones[l].size / 2);
+
+            //nuoY = Mathf.FloorToInt(noBuildZones[l].position.y - noBuildZones[l].size.y / 2);
+            //nuoX = Mathf.FloorToInt(noBuildZones[l].position.x - noBuildZones[l].size.x / 2);
+
+            //ikiY = Mathf.CeilToInt(noBuildZones[l].position.y + noBuildZones[l].size.y / 2);
+            //ikiX = Mathf.CeilToInt(noBuildZones[l].position.x + noBuildZones[l].size.x / 2);
+
+            for (int i = nuo.y; i <= iki.y; i++)
             {
-                for (int j = Mathf.Max(nuoX,0); j <= Mathf.Min(ikiX, rectangleCount.x - 1); j++)
+                for (int j = nuo.x; j <= iki.x; j++)
                 {
                     occupied[i, j] = true;
                 }
@@ -208,6 +214,10 @@ public class BuildingManager : MonoBehaviour
                         obj.transform.localScale = Vector3.zero;
                         obj.transform.DOScale(1, 1).SetEase(Ease.OutBounce);
                         AddTower(obj);
+                    }
+                    else
+                    {
+                        UiManager.Instance.DoWaterShake();
                     }
                 }
             }

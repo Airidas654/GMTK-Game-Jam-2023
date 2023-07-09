@@ -5,11 +5,13 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float health;
+    [SerializeField] float MaxHealth;
     [SerializeField] float movementSpeed;
     [SerializeField] Vector2 target;
     [SerializeField] float damage;
     [SerializeField] float hitDistance;
+
+    float health;
 
     bool stopped = false;
     protected bool dead = false;
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        health = MaxHealth;
         animIndex = Animator.StringToHash("EnemyHit");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
@@ -38,6 +41,8 @@ public class Enemy : MonoBehaviour
 
     public void Reset()
     {
+        health = MaxHealth;
+
         pradCol = spriteRenderer.color;
         pradCol.a = 0;
         hitCol = new Color(pradCol.r, pradCol.g, pradCol.b, 1);

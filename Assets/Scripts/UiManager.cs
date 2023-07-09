@@ -74,9 +74,9 @@ public class UiManager : MonoBehaviour
     {
         if (canShakeAgain)
         {
-            Transform obj = WaterBar.transform.parent;
+            Transform obj = WaterBar.transform.parent.parent;
             canShakeAgain = false;
-            obj.DOShakeRotation(1, 35, 7, 45, true).OnComplete(() => canShakeAgain = true);
+            obj.DOShakeRotation(0.2f, new Vector3(0,0,5), 7, 45, true).SetEase(Ease.OutCubic).OnComplete(() => canShakeAgain = true);
         }
     }
 

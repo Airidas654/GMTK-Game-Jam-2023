@@ -68,10 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9f91354cd2a024398c6ce59adc8684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableArea: {x: 50, y: 40}
-  rectangleCount: {x: 25, y: 20}
+  playableArea: {x: 51, y: 42}
+  rectangleCount: {x: 34, y: 28}
   noBuildZones:
-  - size: {x: 2, y: 2}
+  - size: {x: 2.05, y: 2}
     position: {x: 0, y: 0}
   cursorObjectMaterial: {fileID: 2100000, guid: f270374199cce9848b659ae8716b6d8a, type: 2}
   cursorObject: {fileID: 0}

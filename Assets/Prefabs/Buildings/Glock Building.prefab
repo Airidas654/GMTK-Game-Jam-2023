@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b36c7d1aecba4409daf7469f42f135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  maxHealth: 5
   waterDepletionTimeInSec: 60
   replenishVal: 0.5
   growthSprites:

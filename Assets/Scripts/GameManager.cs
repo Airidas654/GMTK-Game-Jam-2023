@@ -47,9 +47,11 @@ public class GameManager : MonoBehaviour
         Playing = false;
     }
 
+    Transform camTrans;
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
+        camTrans = Camera.main.transform;
     }
 
     public float GetElapsedTime()
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
         return imaginaryWater >= MaxWaterInBar;
     }
 
+    bool canShakeCamera = true;
     public void DamagePump(float damage)
     {
         if (Playing)
@@ -103,6 +106,17 @@ public class GameManager : MonoBehaviour
             Transform obj = Pump.Instance.gameObject.transform.GetChild(0).GetChild(0);
             DOTween.Kill(obj);
             obj.DOScaleX(pumpHealth / pumpMaxHealth, 0.2f).SetEase(Ease.InOutCubic);
+
+            if (canShakeCamera)
+            {
+                canShakeCamera = false;
+                camTrans.DOShakeRotation(0.1f, new Vector3(0, 0, 2), 1, 10, true, ShakeRandomnessMode.Full).OnComplete(() =>
+                {
+                    camTrans.DOKill();
+                    canShakeCamera = true;
+                });
+            }
+
             if (pumpHealth <= 0)
             {
                 GameOver();
@@ -112,6 +126,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        canShakeCamera = true;
         RemainingTime = MaxTime;
         Playing = true;
         SoundManager.Instance.Play("Music");
