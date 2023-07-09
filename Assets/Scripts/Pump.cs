@@ -36,6 +36,8 @@ public class Pump : MonoBehaviour
     public bool stopped = false;
     [SerializeField] float dropSpawnTime = 2f;
 
+    [SerializeField] int waterStrength = 5;
+    [SerializeField] float randThrowDist = 0.5f;
     float spawnVal;
 
     int dropletCount;
@@ -49,7 +51,7 @@ public class Pump : MonoBehaviour
                 dropletCount++;
                 GameObject obj = drops.Get();
                 obj.transform.position = transform.position;
-                obj.GetComponent<PickableDrop>().Reset();
+                obj.GetComponent<PickableDrop>().Reset(null, waterStrength, randThrowDist);
                 spawnVal = dropSpawnTime;
             }
         }

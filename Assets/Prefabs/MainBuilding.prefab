@@ -270,4 +270,6 @@ MonoBehaviour:
   dropPrefab: {fileID: 8622656889779445929, guid: 295d2e41180f4fc4cb252f56ca41327f, type: 3}
   maxDropletCount: 5
   stopped: 0
-  dropSpawnTime: 2
+  dropSpawnTime: 3
+  waterStrength: 5
+  randThrowDist: 0.5
