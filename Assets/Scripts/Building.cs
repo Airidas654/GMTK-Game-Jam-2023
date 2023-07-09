@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Building : MonoBehaviour
 {
@@ -26,8 +27,12 @@ public class Building : MonoBehaviour
 
     protected SpriteRenderer spriteRenderer;
     protected Animator animator;
+
+    Color pradCol, hitCol;
     public void Start()
     {
+        
+
         droppletIcons = GameManager.Instance.droppletIcons;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
@@ -39,6 +44,12 @@ public class Building : MonoBehaviour
 
         growthVal = 0;
         step = growthTime / (growthSprites.Count - 1);
+
+        pradCol = spriteRenderer.color;
+        pradCol.a = 0;
+        hitCol = new Color(pradCol.r, pradCol.g, pradCol.b, 1);
+
+        spriteRenderer.color = pradCol;
     }
 
     public bool NeedsWater()
@@ -50,6 +61,12 @@ public class Building : MonoBehaviour
     {
         health -= damage;
 
+        spriteRenderer.DOKill();
+        spriteRenderer.DOColor(hitCol, 0.1f).SetEase(Ease.OutQuart).OnComplete(() =>
+        {
+            spriteRenderer.DOColor(pradCol, 0.1f).SetEase(Ease.OutQuart);
+        });
+
         if (health <= 0 && !dead)
         {
             dead = true;
@@ -57,6 +74,7 @@ public class Building : MonoBehaviour
             BuildingManager.Instance.DeleteTower(gameObject);
             gameObject.SetActive(false);
             Destroy(gameObject);
+            spriteRenderer.DOKill();
         }
     }
 
