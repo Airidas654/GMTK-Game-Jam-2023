@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Building : MonoBehaviour
 {
-    [SerializeField] float health;
+    [SerializeField] float maxHealth;
     protected bool dead = false;
 
     protected float waterVal = 1;
@@ -29,9 +29,11 @@ public class Building : MonoBehaviour
     protected Animator animator;
 
     Color pradCol, hitCol;
+
+    protected float health;
     public void Start()
     {
-        
+        health = maxHealth;
 
         droppletIcons = GameManager.Instance.droppletIcons;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
