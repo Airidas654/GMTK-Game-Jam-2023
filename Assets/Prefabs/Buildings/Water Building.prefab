@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527ee4118adee704985e49569f6f4a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 2
   waterDepletionTimeInSec: 60
   replenishVal: 0.5
   growthSprites:
@@ -217,7 +217,7 @@ MonoBehaviour:
   - {fileID: 347661854, guid: aea3179ab0baf6540b32e001e9e1583c, type: 3}
   growthTime: 20
   dropPrefab: {fileID: 8622656889779445929, guid: 295d2e41180f4fc4cb252f56ca41327f, type: 3}
-  maxDropletCount: 2
+  maxDropletCount: 1
   waterAmount: 3
   disperseDist: 0.5
   stopped: 0
