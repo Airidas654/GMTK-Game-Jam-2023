@@ -610,46 +610,6 @@ PrefabInstance:
       propertyPath: cursorObject
       value: 
       objectReference: {fileID: 665215177}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[0].robotDamageMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[0].robotHealthMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[1].robotDamageMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[1].robotHealthMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[2].robotDamageMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[2].robotHealthMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[3].robotDamageMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[3].robotHealthMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[4].robotDamageMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346039711323396253, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
-      propertyPath: Waves.Array.data[4].robotHealthMultiplyer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7114972176643473605, guid: ab3c84d14fe96f1439b97c82e278967e, type: 3}
       propertyPath: m_Name
       value: GameManager
