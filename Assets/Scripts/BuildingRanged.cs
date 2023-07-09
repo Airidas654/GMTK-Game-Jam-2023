@@ -77,7 +77,7 @@ public class BuildingRanged : Building
                     shotsLeft--;
 
                     GameObject obj = PoolManager.Instance.shotTrailPool.Get();
-                    obj.GetComponent<ShotTrail>().Reset(transform.position,closest.transform.position);
+                    obj.GetComponent<ShotTrail>().Reset(transform.GetChild(0).position,closest.transform.GetChild(0).position);
 
                     closest.GetComponent<Enemy>().TakeDamage(damage);
                 }

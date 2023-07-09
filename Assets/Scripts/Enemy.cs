@@ -78,8 +78,7 @@ public class Enemy : MonoBehaviour
 
 
         GameObject obj = BuildingManager.Instance.FindClosest(transform.position);
-
-        if (((Vector2)obj.transform.position - (Vector2)transform.position).sqrMagnitude >= ((Vector2)pump.transform.position - (Vector2)transform.position).sqrMagnitude)
+        if (obj == null || (((Vector2)obj.transform.position - (Vector2)transform.position).sqrMagnitude >= ((Vector2)pump.transform.position - (Vector2)transform.position).sqrMagnitude))
         {
             obj = pump;
         }
