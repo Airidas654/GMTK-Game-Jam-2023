@@ -52,7 +52,7 @@ MonoBehaviour:
   MaxTime: 600
   Player: {fileID: 0}
   WorldBorders: {x: 20, y: 15}
-  BuildingCosts: 1e0000000a000000190000003200000050000000
+  BuildingCosts: 1e0000000a00000019000000280000003c000000
   droppletIcons:
   - {fileID: -994252257, guid: 9a45f3868de22424c9d289ad04df9348, type: 3}
   - {fileID: -1927079451, guid: 9a45f3868de22424c9d289ad04df9348, type: 3}
@@ -166,3 +166,11 @@ MonoBehaviour:
     EnemiesCount: 4
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2
+  - TimeToStart: 250
+    EnemiesCount: 5
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 2
+  - TimeToStart: 300
+    EnemiesCount: 15
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 0.75
