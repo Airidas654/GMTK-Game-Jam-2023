@@ -33,9 +33,10 @@ public class MainBullet : MonoBehaviour
     {
         if (oneTime)
         {
-            SoundManager.Instance.PlayOneShot(3);
+            
             if (collision.CompareTag("Enemy"))
             {
+                SoundManager.Instance.PlayOneShot(3);
                 oneTime = false;
                 collision.GetComponent<Enemy>().TakeDamage(Damage);
                 transform.DOScale(0, 0.2f).SetEase(Ease.OutQuart).OnComplete(()=>
@@ -50,6 +51,7 @@ public class MainBullet : MonoBehaviour
                 Building building = collision.GetComponent<Building>();
                 if (building.NeedsWater())
                 {
+                    SoundManager.Instance.PlayOneShot(3);
                     oneTime = false;
                     building.Replenish();
                     transform.DOScale(0, 0.2f).SetEase(Ease.OutQuart).OnComplete(() =>

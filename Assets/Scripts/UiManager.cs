@@ -149,7 +149,7 @@ public class UiManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             if (muted)
             {

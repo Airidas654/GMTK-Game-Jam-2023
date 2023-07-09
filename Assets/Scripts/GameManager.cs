@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
     {
         if (Playing)
         {
+            SoundManager.Instance.PlayOneShot(2);
             pumpHealth -= damage;
             pumpHealth = Mathf.Max(0, pumpHealth);
             Transform obj = Pump.Instance.gameObject.transform.GetChild(0).GetChild(0);
