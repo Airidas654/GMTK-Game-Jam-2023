@@ -53,7 +53,19 @@ public class MainMenu : MonoBehaviour
     {
         if (!starting)
         {
-            if (Input.anyKeyDown && !once && !InTutorial)
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                if (UiManager.muted)
+                {
+                    AudioListener.volume = 1;
+                }
+                else
+                {
+                    AudioListener.volume = 0;
+                }
+                UiManager.muted = !UiManager.muted;
+            }
+            else if (Input.anyKeyDown && !once && !InTutorial)
             {
                 SoundManager.Instance.Play(5);
                 black.gameObject.SetActive(true);
