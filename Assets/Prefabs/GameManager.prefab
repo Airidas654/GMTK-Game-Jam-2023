@@ -116,11 +116,37 @@ MonoBehaviour:
   Waves:
   - TimeToStart: 5
     EnemiesCount: 3
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
   - TimeToStart: 20
     EnemiesCount: 5
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
   - TimeToStart: 30
     EnemiesCount: 5
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
   - TimeToStart: 45
     EnemiesCount: 7
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
   - TimeToStart: 60
     EnemiesCount: 10
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
+  - TimeToStart: 80
+    EnemiesCount: 10
+    robotDamageMultiplyer: 1.1
+    robotHealthMultiplyer: 1
+  - TimeToStart: 90
+    EnemiesCount: 3
+    robotDamageMultiplyer: 1.1
+    robotHealthMultiplyer: 1.2
+  - TimeToStart: 105
+    EnemiesCount: 5
+    robotDamageMultiplyer: 1.2
+    robotHealthMultiplyer: 1.2
+  - TimeToStart: 120
+    EnemiesCount: 10
+    robotDamageMultiplyer: 1.2
+    robotHealthMultiplyer: 1.2

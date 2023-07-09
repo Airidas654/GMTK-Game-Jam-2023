@@ -11,6 +11,8 @@ public class WaveManager : MonoBehaviour
     {
         public float TimeToStart;
         public int EnemiesCount;
+        public float robotDamageMultiplyer;
+        public float robotHealthMultiplyer;
     }
 
 
@@ -41,7 +43,7 @@ public class WaveManager : MonoBehaviour
             {
                 for(int i = 0;i < Waves[currentWave].EnemiesCount; i++)
                 {
-                    EnemyManager.Instance.SpawnNewEnemy();
+                    EnemyManager.Instance.SpawnNewEnemy(Waves[currentWave].robotDamageMultiplyer, Waves[currentWave].robotHealthMultiplyer);
                 }
                 currentWave++;
             }

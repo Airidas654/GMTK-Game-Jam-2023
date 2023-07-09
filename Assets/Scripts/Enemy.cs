@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float MaxHealth;
+    [SerializeField] public float MaxHealth;
     [SerializeField] float movementSpeed;
     [SerializeField] Vector2 target;
-    [SerializeField] float damage;
+    [SerializeField] public float damage;
     [SerializeField] float hitDistance;
 
     float health;

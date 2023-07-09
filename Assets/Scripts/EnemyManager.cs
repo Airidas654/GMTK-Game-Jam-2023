@@ -13,6 +13,9 @@ public class EnemyManager : MonoBehaviour
 
     HashSet<GameObject> aliveEnemies = new HashSet<GameObject>();
 
+    [SerializeField] float DefaultRobotDamage;
+    [SerializeField] float DefaultRobotHealth;
+
     public int GetAliveEnemyCount()
     {
         return aliveEnemies.Count;
@@ -35,14 +38,13 @@ public class EnemyManager : MonoBehaviour
         int rand = Random.Range(0,enemyPrefabs.Count);
 
         GameObject obj = Instantiate(enemyPrefabs[rand]);
-        obj.GetComponent<Enemy>().Reset();
         return obj;
     }
 
     void GetEnemy(GameObject obj)
     {
         obj.SetActive(true);
-        obj.GetComponent<Enemy>().Reset();
+        
     }
     
     void ReleaseEnemy(GameObject obj)
@@ -96,20 +98,18 @@ public class EnemyManager : MonoBehaviour
         return ans;
     }
 
-    IEnumerator testas()
-    {
-        SpawnNewEnemy();
-        yield return new WaitForSeconds(0.1f);
-        StartCoroutine(testas());
-    }
+   
 
-    public void SpawnNewEnemy()
+    public void SpawnNewEnemy(float damageMultiplyer, float healthMultiplyer)
     {
         GameObject obj = enemies.Get();
         obj.transform.position = GetNewSpawnPosition();
         aliveEnemies.Add(obj);
-
-        obj.GetComponent<Enemy>().SetTarget(BuildingManager.Instance.MainBuilding.transform.position);
+        Enemy e = obj.GetComponent<Enemy>();
+        e.MaxHealth = DefaultRobotHealth * healthMultiplyer;
+        e.damage = DefaultRobotDamage * damageMultiplyer;
+        e.Reset();
+        e.SetTarget(BuildingManager.Instance.MainBuilding.transform.position);
     }
 
     private void Awake()
