@@ -40,6 +40,7 @@ public class MainBullet : MonoBehaviour
                 collision.GetComponent<Enemy>().TakeDamage(Damage);
                 transform.DOScale(0, 0.2f).SetEase(Ease.OutQuart).OnComplete(()=>
                 {
+                    transform.DOKill();
                     Destroy(gameObject);
                 });
                 
@@ -53,6 +54,7 @@ public class MainBullet : MonoBehaviour
                     building.Replenish();
                     transform.DOScale(0, 0.2f).SetEase(Ease.OutQuart).OnComplete(() =>
                     {
+                        transform.DOKill();
                         Destroy(gameObject);
                     });
                 }
