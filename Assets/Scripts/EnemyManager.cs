@@ -49,6 +49,7 @@ public class EnemyManager : MonoBehaviour
     {
         aliveEnemies.Remove(obj);
         obj.SetActive(false);
+        obj.transform.position = new Vector2(100, 0);
     }
 
     public GameObject FindClosest(Vector2 pos)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float hitDistance;
 
     bool stopped = false;
-    bool dead = false;
+    protected bool dead = false;
 
     SpriteRenderer spriteRenderer;
     Animator animator;
@@ -33,8 +34,16 @@ public class Enemy : MonoBehaviour
 
     GameObject pump;
 
+    Color pradCol, hitCol;
+
     public void Reset()
     {
+        pradCol = spriteRenderer.color;
+        pradCol.a = 0;
+        hitCol = new Color(pradCol.r, pradCol.g, pradCol.b, 1);
+
+        spriteRenderer.color = pradCol;
+
         stopped = false;
         dead = false;
         pump = Pump.Instance.gameObject;
@@ -50,10 +59,18 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
 
+        spriteRenderer.DOKill();
+        spriteRenderer.DOColor(hitCol, 0.1f).SetEase(Ease.OutQuart).OnComplete(() =>
+        {
+            spriteRenderer.DOColor(pradCol, 0.1f).SetEase(Ease.OutQuart);
+        });
+
         if (health <= 0 && !dead)
         {
             dead = true;
+            animator.SetBool(animIndex, false);
             EnemyManager.Instance.enemies.Release(gameObject);
+            spriteRenderer.DOKill();
             //Destroy(gameObject);
         }
     }

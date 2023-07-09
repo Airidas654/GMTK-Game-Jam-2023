@@ -31,7 +31,7 @@ public class BuildingWater : Building
     {
         base.Update();
         waterVal = 1f;
-        if (!stopped && grown && dropletCount < maxDropletCount)
+        if (!stopped && grown && !dead && dropletCount < maxDropletCount)
         {
             spawnVal -= Time.deltaTime;
             if (spawnVal <= 0)

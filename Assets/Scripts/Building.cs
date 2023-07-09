@@ -5,7 +5,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     [SerializeField] float health;
-    bool dead = false;
+    protected bool dead = false;
 
     protected float waterVal = 1;
     [SerializeField] float waterDepletionTimeInSec = 60f;

@@ -43,7 +43,7 @@ public class BuildingRanged : Building
     private new void Update()
     {
         base.Update();
-        if (grown && working)
+        if (grown && working && !dead)
         {
             GameObject closest = EnemyManager.Instance.FindClosest(transform.position);
             if (closest == null)
