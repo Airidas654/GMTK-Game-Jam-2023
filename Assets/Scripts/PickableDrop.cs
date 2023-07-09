@@ -59,6 +59,7 @@ public class PickableDrop : MonoBehaviour
                 pradPos = transform.position;
                 transform.DOScale(0, 0.5f).SetEase(Ease.InOutCubic).Play();
                 GameManager.Instance.AddImaginaryWater(waterAmount);
+                SoundManager.Instance.PlayOneShot(7);
                 seekTween = DOTween.To(()=>0f,x=>tweenVal = x,1f,0.5f).SetEase(Ease.InOutCubic).OnComplete(()=>
                 {
                     if (dropletPool == null)

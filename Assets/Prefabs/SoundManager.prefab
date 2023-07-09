@@ -94,3 +94,10 @@ MonoBehaviour:
     pitchRandomness: 0
     loop: 1
     audioSource: {fileID: 0}
+  - name: WaterPickUp
+    clip: {fileID: 8300000, guid: 119879b4c1ba735489fe42166ae452d4, type: 3}
+    volume: 0.2
+    pitch: 1
+    pitchRandomness: 0
+    loop: 1
+    audioSource: {fileID: 0}
