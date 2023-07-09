@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         Transform obj = Pump.Instance.gameObject.transform.GetChild(0).GetChild(0);
         DOTween.Kill(obj);
         obj.DOScaleX(pumpHealth / pumpMaxHealth, 0.2f).SetEase(Ease.InOutCubic);
-        if (pumpHealth <= 0)
+        if (pumpHealth <= 0 && Playing)
         {
             GameOver();
         }

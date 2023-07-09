@@ -129,7 +129,6 @@ public class UiManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 SelectBuilding(0);
-                GameManager.Instance.DamagePump(20);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
