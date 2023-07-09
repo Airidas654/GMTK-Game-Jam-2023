@@ -308,6 +308,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6912637176375523086, guid: 7b03f48b2ab858d44bb262998fdb5ab4, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912637176375523086, guid: 7b03f48b2ab858d44bb262998fdb5ab4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.0754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912637176375523086, guid: 7b03f48b2ab858d44bb262998fdb5ab4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.0754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912637176375523086, guid: 7b03f48b2ab858d44bb262998fdb5ab4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.0754717
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -331,6 +347,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4839446102299286574, guid: dc88c7cf2e97f134194705e9a4ff7750, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6431464399595126976, guid: dc88c7cf2e97f134194705e9a4ff7750, type: 3}
       propertyPath: m_Name
       value: Canvas
