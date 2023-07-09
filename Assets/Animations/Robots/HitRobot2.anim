@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HitRevolver
+  m_Name: HitRobot2
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 357380981, guid: 946a9f93398668b4c91754dea8370489, type: 3}
+      value: {fileID: -1907104736, guid: 946a9f93398668b4c91754dea8370489, type: 3}
     - time: 0.25
-      value: {fileID: 943335318, guid: 946a9f93398668b4c91754dea8370489, type: 3}
+      value: {fileID: -667157502, guid: 946a9f93398668b4c91754dea8370489, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 357380981, guid: 946a9f93398668b4c91754dea8370489, type: 3}
-    - {fileID: 943335318, guid: 946a9f93398668b4c91754dea8370489, type: 3}
+    - {fileID: -1907104736, guid: 946a9f93398668b4c91754dea8370489, type: 3}
+    - {fileID: -667157502, guid: 946a9f93398668b4c91754dea8370489, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -73,7 +73,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.25
     functionName: AnimationHit
     data: 
     objectReferenceParameter: {fileID: 0}

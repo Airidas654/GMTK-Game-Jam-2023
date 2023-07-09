@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 656186839956772420}
   - component: {fileID: 9132805022238760144}
   m_Layer: 6
-  m_Name: Revolver enemy
+  m_Name: Robot2 enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,12 +108,12 @@ SpriteRenderer:
   m_SortingLayerID: -1716770279
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1048231997, guid: 84c499d24b3e3be4591d2728dba492dc, type: 3}
+  m_Sprite: {fileID: -1907104736, guid: 946a9f93398668b4c91754dea8370489, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   movementSpeed: 1
   target: {x: 0, y: 0}
   damage: 1
-  hitDistance: 0.1
+  hitDistance: 0.8
 --- !u!58 &656186839956772420
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,9 +168,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.28}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.39
 --- !u!95 &9132805022238760144
 Animator:
   serializedVersion: 5
@@ -181,7 +181,7 @@ Animator:
   m_GameObject: {fileID: 8616400693374126321}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 41b0ea205474a40468e5e8c6a197d618, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3be95a965f94acd49bb721989a266110, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

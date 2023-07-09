@@ -47,3 +47,5 @@ MonoBehaviour:
   notSpawnBox: {x: 43, y: 33}
   enemyPrefabs:
   - {fileID: 8616400693374126321, guid: 6932f540673a8b34c89c9cd4d0ba9108, type: 3}
+  - {fileID: 8616400693374126321, guid: daa5ab0d27ba59f40a51c67e88a13c49, type: 3}
+  - {fileID: 8616400693374126321, guid: 1aaa38a2b6efbdc4aa83488c751bfb75, type: 3}

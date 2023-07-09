@@ -30,6 +30,7 @@ public class BuildingWater : Building
     private new void Update()
     {
         base.Update();
+        waterVal = 1f;
         if (!stopped && grown && dropletCount < maxDropletCount)
         {
             spawnVal -= Time.deltaTime;

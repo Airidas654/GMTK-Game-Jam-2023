@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public List<int> BuildingCosts;
 
+    public List<Sprite> droppletIcons;
+
     public static GameManager Instance;
 
     private void OnDrawGizmosSelected()

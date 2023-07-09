@@ -7,7 +7,7 @@ public class Building : MonoBehaviour
     [SerializeField] float health;
     bool dead = false;
 
-    float waterVal = 1;
+    protected float waterVal = 1;
     [SerializeField] float waterDepletionTimeInSec = 60f;
     [SerializeField] float replenishVal = 0.5f;
 
@@ -18,6 +18,9 @@ public class Building : MonoBehaviour
     [SerializeField] List<Sprite> growthSprites = new List<Sprite>();
     [SerializeField] float growthTime = 20f;
 
+    List<Sprite> droppletIcons;
+    SpriteRenderer droppletVisual;
+
     float growthVal;
     float step;
 
@@ -25,8 +28,11 @@ public class Building : MonoBehaviour
     protected Animator animator;
     public void Start()
     {
+        droppletIcons = GameManager.Instance.droppletIcons;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
+
+        droppletVisual = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
         bool randFlip = Random.Range(0, 2) == 0 ? true : false;
         spriteRenderer.flipX = randFlip;
@@ -37,7 +43,7 @@ public class Building : MonoBehaviour
 
     public bool NeedsWater()
     {
-        return waterVal <= 0.75f;
+        return waterVal <= 0.5f;
     }
 
     public virtual void TakeDamage(float damage)
@@ -54,19 +60,27 @@ public class Building : MonoBehaviour
         }
     }
 
+    void TryChangeDropIcon()
+    {
+        if (NeedsWater())
+        {
+            droppletVisual.gameObject.SetActive(true);
+
+            droppletVisual.sprite = droppletIcons[waterVal > 0 ? 0 : 1];
+        }
+        else
+        {
+            droppletVisual.gameObject.SetActive(false);
+        }
+    }
+
     public virtual void Replenish()
     {
         waterVal += replenishVal;
         waterVal = Mathf.Min(waterVal, 1);
 
-        if (waterVal == 0)
-        {
-            working = false;
-        }
-        else
-        {
-            working = true;
-        }
+        working = true;
+        TryChangeDropIcon();
     }
 
     
@@ -85,6 +99,7 @@ public class Building : MonoBehaviour
             {
                 working = true;
             }
+            TryChangeDropIcon();
         }
         else
         {

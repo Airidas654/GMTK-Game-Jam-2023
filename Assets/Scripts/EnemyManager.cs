@@ -32,7 +32,9 @@ public class EnemyManager : MonoBehaviour
 
     GameObject CreateEnemy()
     {
-        GameObject obj = Instantiate(enemyPrefabs[0]);
+        int rand = Random.Range(0,enemyPrefabs.Count);
+
+        GameObject obj = Instantiate(enemyPrefabs[rand]);
         obj.GetComponent<Enemy>().Reset();
         return obj;
     }

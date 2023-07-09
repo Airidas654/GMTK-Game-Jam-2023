@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 84c499d24b3e3be4591d2728dba492dc
+guid: 946a9f93398668b4c91754dea8370489
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: robot_0
+      name: robot (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 9
-      pivot: {x: 0.56, y: 0.01}
+      pivot: {x: 0.57, y: 0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abc15cdca95d7a84dbb6b8892bfac58c
-      internalID: -1048231997
+      spriteID: d485197f54435374fb747f5825c2ece6
+      internalID: 357380981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: robot_1
+      name: robot (1)_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 9
-      pivot: {x: 0.56, y: 0.01}
+      pivot: {x: 0.57, y: 0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ce13c23ad911464ab01dc789f94b427
-      internalID: -822439132
+      spriteID: 207ba77baaf41e8489a8dea0edbe804f
+      internalID: 943335318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot (1)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50e82dda2faebdd47bc8eed853c63fd8
+      internalID: -1032857067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot (1)_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f2faa2b4488304d846149328511a3d
+      internalID: 1635754274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot (1)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.54, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f9d4cf1ce52b1c4b9d364594b311399
+      internalID: -1907104736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot (1)_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.54, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6659ab5153c0d6428358d817cac80dc
+      internalID: -667157502
       vertices: []
       indices: 
       edges: []
@@ -175,8 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      robot_0: -1048231997
-      robot_1: -822439132
+      robot (1)_0: 357380981
+      robot (1)_1: 943335318
+      robot (1)_2: -1032857067
+      robot (1)_3: 1635754274
+      robot (1)_4: -1907104736
+      robot (1)_5: -667157502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

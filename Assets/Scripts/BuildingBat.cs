@@ -33,7 +33,7 @@ public class BuildingBat : Building
     private new void Update()
     {
         base.Update();
-        if (grown)
+        if (grown && working)
         {
             GameObject closest = EnemyManager.Instance.FindClosest(transform.position);
             if (closest == null)
