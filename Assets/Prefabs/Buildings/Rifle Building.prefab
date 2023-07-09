@@ -35,7 +35,7 @@ Transform:
   - {fileID: 3323665783838324008}
   - {fileID: 872516326733754914}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &840269542756898692
 SpriteRenderer:
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b36c7d1aecba4409daf7469f42f135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   waterDepletionTimeInSec: 60
   replenishVal: 0.5
   growthSprites:

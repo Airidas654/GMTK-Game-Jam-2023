@@ -119,7 +119,7 @@ Transform:
   - {fileID: 6382626492687942264}
   - {fileID: 7859475462714064785}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &840269542756898692
 SpriteRenderer:
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527ee4118adee704985e49569f6f4a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 1
   waterDepletionTimeInSec: 60
   replenishVal: 0.5
   growthSprites:
@@ -221,7 +221,7 @@ MonoBehaviour:
   waterAmount: 3
   disperseDist: 0.5
   stopped: 0
-  dropSpawnTime: 2
+  dropSpawnTime: 5
 --- !u!58 &6878691308570853204
 CircleCollider2D:
   m_ObjectHideFlags: 0

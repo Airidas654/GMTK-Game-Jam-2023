@@ -35,7 +35,7 @@ Transform:
   - {fileID: 5873826954133678276}
   - {fileID: 1321470167508522635}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &840269542756898692
 SpriteRenderer:
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f23249c6885e344b62368895e7fe59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
   waterDepletionTimeInSec: 60
   replenishVal: 0.5
   growthSprites:
@@ -112,7 +112,7 @@ MonoBehaviour:
   - {fileID: -1327265489, guid: 4b6a25b0a2dd27846a2ff1f5fe77d2d9, type: 3}
   growthTime: 20
   enemyDetectionRange: 10
-  enemyHitRange: 1
+  enemyHitRange: 1.25
   damage: 1
 --- !u!95 &3580600426989307334
 Animator:
