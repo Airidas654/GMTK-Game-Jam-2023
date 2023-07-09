@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
     {
         RemainingTime = MaxTime;
         Playing = true;
+        SoundManager.Instance.Play("Music");
     }
 
     public void GameOver()

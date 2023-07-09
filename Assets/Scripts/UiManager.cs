@@ -55,7 +55,7 @@ public class UiManager : MonoBehaviour
     {
         DOTween.Kill(black.color);
         black.gameObject.SetActive(true);
-        DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 1), 1).OnComplete(() => { DOTween.KillAll(); SceneManager.LoadScene(0); }).SetEase(Ease.InOutCubic);
+        DOTween.To(() => black.color, x => black.color = x, new Color(0, 0, 0, 1), 1).OnComplete(() => { DOTween.KillAll(); SoundManager.Instance.Stop("Music"); SceneManager.LoadScene(0); }).SetEase(Ease.InOutCubic);
     }
 
     public void UpdateTimer(int time)
