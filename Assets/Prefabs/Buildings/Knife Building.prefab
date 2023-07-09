@@ -113,7 +113,7 @@ MonoBehaviour:
   growthTime: 20
   enemyDetectionRange: 10
   enemyHitRange: 1.25
-  damage: 1
+  damage: 3
 --- !u!95 &3580600426989307334
 Animator:
   serializedVersion: 5
