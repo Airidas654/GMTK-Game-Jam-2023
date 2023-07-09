@@ -28,6 +28,7 @@ public class Shooting : MonoBehaviour
     {
         if (!shotOnce)
         {
+            SoundManager.Instance.Play(1);
             Vector3 pos = transform.GetChild(0).position;
             GameObject obj = Instantiate(BulletPrefab, pos, Quaternion.identity);
             Vector2 dir = ((Vector2)mousepos - (Vector2)pos).normalized;

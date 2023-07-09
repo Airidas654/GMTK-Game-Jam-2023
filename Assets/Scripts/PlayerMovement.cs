@@ -151,4 +151,10 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+
+    public void StepSound()
+    {
+        SoundManager.Instance.PlayOneShot(0);
+    }
+
 }
