@@ -127,6 +127,7 @@ public class BuildingManager : MonoBehaviour
         Vector2Int index = GetIndices(obj.transform.position);
         occupied[index.y, index.x] = true;
         towers.Add(obj,index);
+        SoundManager.Instance.PlayOneShot(4);
     }
 
     public void DeleteTower(GameObject obj)

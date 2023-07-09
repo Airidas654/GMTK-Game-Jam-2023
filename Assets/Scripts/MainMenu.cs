@@ -55,6 +55,7 @@ public class MainMenu : MonoBehaviour
         {
             if (Input.anyKeyDown && !once && !InTutorial)
             {
+                SoundManager.Instance.Play(5);
                 black.gameObject.SetActive(true);
                 DOTween.Kill(black.color);
                 once = true;
@@ -76,10 +77,12 @@ public class MainMenu : MonoBehaviour
             else if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && InTutorial && canPressNextTutorial)
             {
                 NextTutorial();
+                SoundManager.Instance.Play(5);
                 canPressNextTutorial = false;
             }
             if (Input.GetKeyDown(KeyCode.Escape) && InTutorial && canPressNextTutorial)
             {
+                SoundManager.Instance.Play(5);
                 black.gameObject.SetActive(true);
                 canPressNextTutorial = false;
                 DOTween.Kill(black.color);

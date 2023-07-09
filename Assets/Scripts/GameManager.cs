@@ -95,14 +95,17 @@ public class GameManager : MonoBehaviour
 
     public void DamagePump(float damage)
     {
-        pumpHealth -= damage;
-        pumpHealth = Mathf.Max(0, pumpHealth);
-        Transform obj = Pump.Instance.gameObject.transform.GetChild(0).GetChild(0);
-        DOTween.Kill(obj);
-        obj.DOScaleX(pumpHealth / pumpMaxHealth, 0.2f).SetEase(Ease.InOutCubic);
-        if (pumpHealth <= 0 && Playing)
+        if (Playing)
         {
-            GameOver();
+            pumpHealth -= damage;
+            pumpHealth = Mathf.Max(0, pumpHealth);
+            Transform obj = Pump.Instance.gameObject.transform.GetChild(0).GetChild(0);
+            DOTween.Kill(obj);
+            obj.DOScaleX(pumpHealth / pumpMaxHealth, 0.2f).SetEase(Ease.InOutCubic);
+            if (pumpHealth <= 0)
+            {
+                GameOver();
+            }
         }
     }
 

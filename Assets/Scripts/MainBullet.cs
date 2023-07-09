@@ -26,6 +26,7 @@ public class MainBullet : MonoBehaviour
     {
         if (oneTime)
         {
+            SoundManager.Instance.PlayOneShot(3);
             if (collision.CompareTag("Enemy"))
             {
                 oneTime = false;

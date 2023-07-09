@@ -16,6 +16,7 @@ public class UiManager : MonoBehaviour
 
     public static UiManager Instance;
     public static int? survived;
+    public static bool muted;
 
     private float defaultY;
     [SerializeField] float BuildingBlockOffsetY;
@@ -146,6 +147,19 @@ public class UiManager : MonoBehaviour
             {
                 SelectBuilding(4);
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            if (muted)
+            {
+                AudioListener.volume = 1;
+            }
+            else
+            {
+                AudioListener.volume = 0;
+            }
+            muted = !muted;
         }
     }
 
