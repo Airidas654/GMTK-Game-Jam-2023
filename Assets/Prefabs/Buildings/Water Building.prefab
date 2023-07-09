@@ -218,7 +218,7 @@ MonoBehaviour:
   growthTime: 20
   dropPrefab: {fileID: 8622656889779445929, guid: 295d2e41180f4fc4cb252f56ca41327f, type: 3}
   maxDropletCount: 2
-  waterAmount: 5
+  waterAmount: 3
   disperseDist: 0.5
   stopped: 0
   dropSpawnTime: 5

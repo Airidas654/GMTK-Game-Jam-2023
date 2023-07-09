@@ -127,7 +127,7 @@ MonoBehaviour:
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 1
   - TimeToStart: 45
-    EnemiesCount: 5
+    EnemiesCount: 4
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 1
   - TimeToStart: 60
@@ -183,13 +183,13 @@ MonoBehaviour:
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2
   - TimeToStart: 350
-    EnemiesCount: 1
+    EnemiesCount: 3
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2
   - TimeToStart: 380
-    EnemiesCount: 1
+    EnemiesCount: 3
     robotDamageMultiplyer: 1
-    robotHealthMultiplyer: 5
+    robotHealthMultiplyer: 3
   - TimeToStart: 410
     EnemiesCount: 3
     robotDamageMultiplyer: 1
@@ -199,38 +199,38 @@ MonoBehaviour:
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2.5
   - TimeToStart: 470
-    EnemiesCount: 3
+    EnemiesCount: 5
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2.5
   - TimeToStart: 500
-    EnemiesCount: 7
+    EnemiesCount: 8
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 1.5
   - TimeToStart: 530
-    EnemiesCount: 10
+    EnemiesCount: 12
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 1
   - TimeToStart: 550
-    EnemiesCount: 4
+    EnemiesCount: 5
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2.5
   - TimeToStart: 560
-    EnemiesCount: 3
-    robotDamageMultiplyer: 1
-    robotHealthMultiplyer: 1.5
-  - TimeToStart: 600
-    EnemiesCount: 10
-    robotDamageMultiplyer: 1
-    robotHealthMultiplyer: 1
-  - TimeToStart: 600
     EnemiesCount: 4
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 1.5
   - TimeToStart: 600
-    EnemiesCount: 2
+    EnemiesCount: 13
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1
+  - TimeToStart: 600
+    EnemiesCount: 5
+    robotDamageMultiplyer: 1
+    robotHealthMultiplyer: 1.5
+  - TimeToStart: 600
+    EnemiesCount: 3
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2
   - TimeToStart: 600
-    EnemiesCount: 1
+    EnemiesCount: 2
     robotDamageMultiplyer: 1
     robotHealthMultiplyer: 2.5
