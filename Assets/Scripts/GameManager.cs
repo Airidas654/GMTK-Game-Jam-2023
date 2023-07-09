@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
         canShakeCamera = true;
         RemainingTime = MaxTime;
         Playing = true;
+        SoundManager.Instance.Play("Music");
     }
 
     public void GameOver()
